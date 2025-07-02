@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#181C24FA" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#181C24FA" media="(prefers-color-scheme: dark)">
+
+    <title>GABBAR Chat (Llama2 & CodeLlama)</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/fontawesome/fontawesome-free-6.4.2-web/css/all.min.css">
+    <link rel="icon" type="image/png" href="/assets/img/logo.png">
+    <!-- Replace this in your <head> -->
+    <link rel="stylesheet" href="/assets/css/atom-one-dark.min.css">
+
+
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-close" id="sidebar-close">&times;</div>
+            <div class="sidebar-header">
+                <div class="app-logo"><img src="/assets/img/logo.png" alt="Gabbar Logo" class="logo-img"></div>
+                <div class="app-title">GABBAR.AI</div>
+            </div>
+            <div class="sidebar-recent">
+
+                <button id="share-qr" class="new-chat-btn" style="margin-bottom: 6px;">⛶  Share Qr</button>
+                <button id="new-chat-btn" class="new-chat-btn">➕ New Chat</button>
+                <div class="recent-title">Recent Chats</div>
+                <div class="recent-chats-cont-scrolll">
+                    <ul id="recent-chats">
+                        <!-- Recent chats will be injected here -->
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </header>
+            <section class="chat-section" id="chat-section">
+                <div id="chat-box" class="chat-box">
+                    <section class="quick-actions" id="quick-actions">
+                        <div class="greeting greeting-center">
+                            <span class="greeting-hello">Hello <span id="user-name">User</span></span><br>
+                            <span class="greeting-sub">How can I help you today?</span>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">🕑</div>
+                            <div class="action-title">What's Happen in 24 hours?</div>
+                            <div class="action-desc">See what's been happening in the world over the last 24 hours</div>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">📈</div>
+                            <div class="action-title">Stock market update</div>
+                            <div class="action-desc">See what's happening in the stock market in real time</div>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">🔍</div>
+                            <div class="action-title">Deep economic research</div>
+                            <div class="action-desc">See research from experts that we have simplified</div>
+                        </div>
+                    </section>
+                </div>
+                <form id="chat-form" class="chat-input-row">
+                    <textarea id="message" placeholder="Ask something..." autocomplete="off" required rows="1"></textarea>
+                    <button id="send-btn" type="submit">➤</button>
+                </form>
+            </section>
+            <footer class="main-footer">
+                <span>Made with ❤️ from NinjaOfNodes. Powered by <a href="#">Ollama</a></span>
+            </footer>
+        </main>
+    </div>
+    <!-- Delete confirmation modal -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-title">Delete this chat?</div>
+            <div class="modal-desc">This action cannot be undone.</div>
+            <button id="cancel-delete-btn" class="modal-btn modal-btn-cancel">Cancel</button>
+            <button id="confirm-delete-btn" class="modal-btn modal-btn-delete">Delete</button>
+        </div>
+    </div>
+
+    <div id="qr-modal" class="modal-overlay">
+        <div class="modal-dialog" style="padding: 28px;">
+            <img src="assets/img/qrscann.png" style="height: 200px;width: 200px;pointer-events: none;" alt="">
+            <h3 style="color: white;">Scan QR code to use it in Mobile !</h3>
+            <button id="close-btt" class="modal-btn modal-btn-delete" style="width: 100%;">Close</button>
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="/assets/js/chat.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
+    <script src="/assets/js/highlight.min.js"></script>
+    <script>
+        $('#message').on('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px'; // 120px = max-height
+        });
+    </script>
+</body>
+
+</html>
